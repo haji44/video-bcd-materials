@@ -48,7 +48,7 @@ struct Reminders_SwiftUIApp: App {
 
   var body: some Scene {
     WindowGroup {
-      ContentView()
+        ContentView().environment(\.managedObjectContext, persistentCoreContainer.viewContext)
     }
   }
 }
