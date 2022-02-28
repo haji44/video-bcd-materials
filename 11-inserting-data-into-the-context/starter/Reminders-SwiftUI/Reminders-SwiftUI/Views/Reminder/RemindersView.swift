@@ -31,33 +31,50 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import CoreData
 
 struct RemindersView: View {
-  @State var isShowingCreateModal: Bool = false
-  
-  var body: some View {
-    VStack {
-      List {
-        Section {
-          ForEach(1...10, id: \.self) { _ in
-            Text("Test")
-          }
-        }
-      }
-      .listStyle(PlainListStyle())
-      .background(Color.white)
-      HStack {
-        NewReminderButtonView(isShowingCreateModal: $isShowingCreateModal)
-        Spacer()
-      }
-      .padding(.leading)
+    @State var isShowingCreateModal: Bool = false
+    let fetchRequest = Reminder.completedRemindersFetchReqeust()
+    
+    var reminder: FetchedResults<Reminder> {
+        fetchRequest.wrappedValue
     }
-    .navigationBarTitle(Text("Reminders"))
-  }
+    let reminderList: ReminderList
+    
+    var body: some View {
+        VStack {
+            List {
+                Section {
+                    ForEach(reminderList.reminders, id: \.self) { reminder in
+                        ReminderRow(reminder: reminder)
+                    }
+                }
+            }
+            .listStyle(PlainListStyle())
+            .background(Color.white)
+            HStack {
+                NewReminderButtonView(isShowingCreateModal: $isShowingCreateModal, reminderList: reminderList)
+                Spacer()
+            }
+            .padding(.leading)
+        }
+        .navigationBarTitle(Text("Reminders"))
+    }
 }
 
 struct RemindersView_Previews: PreviewProvider {
-  static var previews: some View {
-    RemindersView()
-  }
+    static var previews: some View {
+        let container = NSPersistentContainer(name: "Reminders")
+        container.loadPersistentStores { (storeDescription, error) in
+          if let error = error as NSError? {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+          }
+        }
+        let context = container.viewContext
+        let newReminderList = ReminderList(context: context)
+        newReminderList.title = "Preview List"
+        
+        return RemindersView(reminderList: newReminderList).environment(\.managedObjectContext, container.viewContext)
+    }
 }

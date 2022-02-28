@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import CoreData
+import SwiftUI
 
 extension Reminder {
     @NSManaged var title: String
@@ -38,11 +39,13 @@ extension Reminder {
     @NSManaged var notes: String?
     @NSManaged var dueDate: Date?
     @NSManaged var priority: Int16
-    
+    @NSManaged var list: ReminderList
+
     static func createWith(title: String,
                            notes: String?,
                            date: Date?,
                            priority: ReminderPriority,
+                           in list: ReminderList,
                            using viewContext: NSManagedObjectContext) {
         
         let reminder = Reminder(context: viewContext)
@@ -50,14 +53,38 @@ extension Reminder {
         reminder.notes = notes
         reminder.dueDate = date
         reminder.priority = priority.rawValue
+        reminder.list = list
         
         do {
             try viewContext.save()
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-        
+        }        
     }
     
+    // MARK: - Retrieve the all Data
+    static func basicFetchRequest() -> FetchRequest<Reminder> {
+        FetchRequest(entity: Reminder.entity(), sortDescriptors: [])
+    }
+    // MARK: - Sorted by date
+    static func sortedFetchRequest() -> FetchRequest<Reminder> {
+        // Key means that
+        let dateSortDescriptor = NSSortDescriptor(key: "dueDate", ascending: false)
+        return FetchRequest(entity: Reminder.entity(),sortDescriptors: [dateSortDescriptor])
+    }
+    // MARK: - Combine sorted condition
+    static func fetchReqeustSortedByTitleAndPriority() -> FetchRequest<Reminder> {
+        let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        let priorityDescriptor = NSSortDescriptor(key: "priority", ascending: false)
+        return FetchRequest(entity: Reminder.entity(), sortDescriptors: [titleSortDescriptor, priorityDescriptor])
+    }
+    
+    static func completedRemindersFetchReqeust() -> FetchRequest<Reminder> {
+        let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        let priorityDescriptor = NSSortDescriptor(key: "priority", ascending: false)
+        let isCompletedPredicate = NSPredicate(format: "%K == %@", "isCompleted", NSNumber(value: false))
+        
+        return FetchRequest(entity: Reminder.entity(), sortDescriptors: [titleSortDescriptor, priorityDescriptor], predicate: isCompletedPredicate)
+    }
 }

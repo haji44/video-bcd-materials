@@ -29,12 +29,12 @@
 /// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
-
+import CoreData
 import SwiftUI
 
 struct NewReminderButtonView: View {
   @Binding var isShowingCreateModal: Bool
-  
+    let reminderList: ReminderList
   var body: some View {
     Button(action: { isShowingCreateModal.toggle() }) {
       Image(systemName: "plus.circle.fill")
@@ -43,13 +43,22 @@ struct NewReminderButtonView: View {
         .font(.headline)
         .foregroundColor(.red)
     }.sheet(isPresented: $isShowingCreateModal) {
-      CreateReminderView()
+        CreateReminderView(reminderList: reminderList)
     }
   }
 }
 
 struct NewReminderButtonView_Previews: PreviewProvider {
   static var previews: some View {
-    NewReminderButtonView(isShowingCreateModal: .constant(false))
+      let container = NSPersistentContainer(name: "Reminders")
+      container.loadPersistentStores { (storeDescription, error) in
+        if let error = error as NSError? {
+          fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+      }
+      let context = container.viewContext
+      let newReminder = ReminderList(context: context)
+      newReminder.title = "Some task"
+      return NewReminderButtonView(isShowingCreateModal: .constant(false), reminderList: newReminder).environment(\.managedObjectContext, context)
   }
 }

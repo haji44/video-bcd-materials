@@ -31,26 +31,42 @@
 /// THE SOFTWARE.
 
 import SwiftUI
-
+import CoreData
 struct ReminderRow: View {
-  @State var isCompleted: Bool = false
-  
-  var body: some View {
-    HStack {
-      Button(action: {
-        isCompleted.toggle()
-      }) {
-        ReminderStatusView(isChecked: $isCompleted)
-      }
-      Text("Placeholder")
-      Spacer()
+    let reminder: Reminder
+    @State var isCompleted: Bool = false
+    
+    private var priority: String {
+        ReminderPriority(rawValue: reminder.priority)?.shortDisplay ?? ""
     }
-  }
+    
+    var body: some View {
+        HStack {
+            Button(action: {
+                isCompleted.toggle()
+                self.reminder.isCompleted = self.isCompleted
+            }) {
+                ReminderStatusView(isChecked: $isCompleted)
+            }
+            Text("\(priority) \(reminder.title)")
+            Spacer()
+        }
+    }
 }
 
 struct ReminderRow_Previews: PreviewProvider {
-  static var previews: some View {
-    return ReminderRow()
-      .previewLayout(.fixed(width: 300, height: 70))
-  }
+    static var previews: some View {
+        let container = NSPersistentContainer(name: "Reminders")
+        container.loadPersistentStores { (storeDescription, error) in
+          if let error = error as NSError? {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+          }
+        }
+        let context = container.viewContext
+        let newReminder = Reminder(context: context)
+        newReminder.title = "Some task"
+        return ReminderRow(reminder: newReminder)
+            .environment(\.managedObjectContext, container.viewContext)
+            .previewLayout(.fixed(width: 300, height: 70))
+    }
 }

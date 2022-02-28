@@ -34,12 +34,22 @@ import SwiftUI
 
 struct ContentView: View {
   @State var isShowingListModal = false
+    @Environment(\.managedObjectContext) var viewContext
 
   var body: some View {
     NavigationView {
-      RemindersView()
+      ReminderListView()
       .navigationBarTitle(Text("Reminders"))
-      .navigationBarItems(leading: EditButton())
+      .navigationBarItems(leading: EditButton(),
+                          trailing: Button(action: {
+          self.isShowingListModal.toggle()
+      }, label: {
+          Image(systemName: "plus")
+      }).sheet(isPresented: $isShowingListModal, content: {
+          ReminderListCreateView().environment(\.managedObjectContext, self.viewContext)
+      })
+                            
+      )
     }
   }
 }
