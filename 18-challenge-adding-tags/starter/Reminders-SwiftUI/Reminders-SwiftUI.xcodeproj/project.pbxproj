@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202D24C627CE8B3C00A21DEF /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D24C427CE8B3C00A21DEF /* Tag+CoreDataClass.swift */; };
+		202D24C727CE8B3C00A21DEF /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D24C527CE8B3C00A21DEF /* Tag+CoreDataProperties.swift */; };
 		D30696302534B3CD00374799 /* ReminderList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306962E2534B3CD00374799 /* ReminderList+CoreDataClass.swift */; };
 		D30696312534B3CD00374799 /* ReminderList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306962F2534B3CD00374799 /* ReminderList+CoreDataProperties.swift */; };
 		D30E2A87252E573E0040AFDA /* Reminders_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E2A86252E573E0040AFDA /* Reminders_SwiftUIApp.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202D24C427CE8B3C00A21DEF /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		202D24C527CE8B3C00A21DEF /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D306962E2534B3CD00374799 /* ReminderList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D306962F2534B3CD00374799 /* ReminderList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D30E2A83252E573E0040AFDA /* Reminders-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +68,8 @@
 		D308BF65252E635800B8E988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				202D24C427CE8B3C00A21DEF /* Tag+CoreDataClass.swift */,
+				202D24C527CE8B3C00A21DEF /* Tag+CoreDataProperties.swift */,
 				D306962E2534B3CD00374799 /* ReminderList+CoreDataClass.swift */,
 				D306962F2534B3CD00374799 /* ReminderList+CoreDataProperties.swift */,
 				D36CFB11252E5B650099A462 /* Reminders.xcdatamodeld */,
@@ -213,12 +219,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30E2A9F252E57B30040AFDA /* ReminderStatusView.swift in Sources */,
+				202D24C627CE8B3C00A21DEF /* Tag+CoreDataClass.swift in Sources */,
 				D3A0C43D252E66F300A495D4 /* Reminder+CoreDataClass.swift in Sources */,
 				D30696302534B3CD00374799 /* ReminderList+CoreDataClass.swift in Sources */,
 				D30696312534B3CD00374799 /* ReminderList+CoreDataProperties.swift in Sources */,
 				D33F15FA2534B6A800EBE85F /* ReminderListCreateView.swift in Sources */,
 				D30E2AA1252E57B30040AFDA /* NewReminderButtonView.swift in Sources */,
 				D30E2AA2252E57B30040AFDA /* CreateReminderView.swift in Sources */,
+				202D24C727CE8B3C00A21DEF /* Tag+CoreDataProperties.swift in Sources */,
 				D30E2A89252E573E0040AFDA /* ContentView.swift in Sources */,
 				D30E2AA0252E57B30040AFDA /* RemindersView.swift in Sources */,
 				D3A0C440252E675100A495D4 /* Reminder+CoreDataProperties.swift in Sources */,
@@ -357,7 +365,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Reminders-SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = QDKA3FBC46;
+				DEVELOPMENT_TEAM = 3TC8M379VG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Reminders-SwiftUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -379,7 +387,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Reminders-SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = QDKA3FBC46;
+				DEVELOPMENT_TEAM = 3TC8M379VG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Reminders-SwiftUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202D24E427CEA0CF00A21DEF /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D24E327CEA0CF00A21DEF /* TagView.swift */; };
 		D30696302534B3CD00374799 /* ReminderList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306962E2534B3CD00374799 /* ReminderList+CoreDataClass.swift */; };
 		D30696312534B3CD00374799 /* ReminderList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306962F2534B3CD00374799 /* ReminderList+CoreDataProperties.swift */; };
 		D30E2A87252E573E0040AFDA /* Reminders_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E2A86252E573E0040AFDA /* Reminders_SwiftUIApp.swift */; };
@@ -23,7 +24,6 @@
 		D33F15FA2534B6A800EBE85F /* ReminderListCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F15F72534B6A800EBE85F /* ReminderListCreateView.swift */; };
 		D33F15FB2534B6A800EBE85F /* ReminderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F15F82534B6A800EBE85F /* ReminderListView.swift */; };
 		D36CFB13252E5B650099A462 /* Reminders.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D36CFB11252E5B650099A462 /* Reminders.xcdatamodeld */; };
-		D38D7B2C25362DFA00E27684 /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38D7B2B25362DFA00E27684 /* TagsView.swift */; };
 		D3A0C43D252E66F300A495D4 /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0C43C252E66F300A495D4 /* Reminder+CoreDataClass.swift */; };
 		D3A0C440252E675100A495D4 /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A0C43F252E675100A495D4 /* Reminder+CoreDataProperties.swift */; };
 		D3E7C1482534E79000F46238 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E7C1462534E79000F46238 /* Tag+CoreDataClass.swift */; };
@@ -31,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202D24E327CEA0CF00A21DEF /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		D306962E2534B3CD00374799 /* ReminderList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D306962F2534B3CD00374799 /* ReminderList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D30E2A83252E573E0040AFDA /* Reminders-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,7 +50,6 @@
 		D33F15F72534B6A800EBE85F /* ReminderListCreateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderListCreateView.swift; sourceTree = "<group>"; };
 		D33F15F82534B6A800EBE85F /* ReminderListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderListView.swift; sourceTree = "<group>"; };
 		D36CFB12252E5B650099A462 /* Reminders.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reminders.xcdatamodel; sourceTree = "<group>"; };
-		D38D7B2B25362DFA00E27684 /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		D3A0C43C252E66F300A495D4 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D3A0C43F252E675100A495D4 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3E7C1462534E79000F46238 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -67,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202D24E227CEA0C200A21DEF /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				202D24E327CEA0CF00A21DEF /* TagView.swift */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
 		D308BF65252E635800B8E988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +130,7 @@
 		D30E2A96252E578C0040AFDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D38D7B2A25362DD800E27684 /* Tags */,
+				202D24E227CEA0C200A21DEF /* Tag */,
 				D33F15FD2534B6D900EBE85F /* ReminderList */,
 				D30E2A97252E579C0040AFDA /* Reminder */,
 			);
@@ -150,14 +158,6 @@
 				D33F15F82534B6A800EBE85F /* ReminderListView.swift */,
 			);
 			path = ReminderList;
-			sourceTree = "<group>";
-		};
-		D38D7B2A25362DD800E27684 /* Tags */ = {
-			isa = PBXGroup;
-			children = (
-				D38D7B2B25362DFA00E27684 /* TagsView.swift */,
-			);
-			path = Tags;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D38D7B2C25362DFA00E27684 /* TagsView.swift in Sources */,
+				202D24E427CEA0CF00A21DEF /* TagView.swift in Sources */,
 				D30E2A9F252E57B30040AFDA /* ReminderStatusView.swift in Sources */,
 				D3E7C1482534E79000F46238 /* Tag+CoreDataClass.swift in Sources */,
 				D3A0C43D252E66F300A495D4 /* Reminder+CoreDataClass.swift in Sources */,
@@ -377,7 +377,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Reminders-SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = QDKA3FBC46;
+				DEVELOPMENT_TEAM = 3TC8M379VG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Reminders-SwiftUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -399,7 +399,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Reminders-SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = QDKA3FBC46;
+				DEVELOPMENT_TEAM = 3TC8M379VG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Reminders-SwiftUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

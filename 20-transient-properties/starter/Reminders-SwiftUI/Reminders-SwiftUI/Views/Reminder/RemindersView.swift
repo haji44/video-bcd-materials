@@ -79,7 +79,7 @@ struct RemindersView: View {
                             Text("Tags")
                           }
                           .sheet(isPresented: $isShowingTagsModal, content: {
-                            TagsView(tags: tags)
+                            TagView(tags: tags)
                           }))
   }
 

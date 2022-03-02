@@ -33,48 +33,82 @@
 import SwiftUI
 
 struct ReminderListCreateView: View {
-  @Environment(\.managedObjectContext) var viewContext
-  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-  
-  @State var text: String = ""
-  
-  var body: some View {
-    NavigationView {
-      VStack(alignment: .leading) {
-        HStack {
-          Spacer()
-          CircularImageView(color: .red)
-          Spacer()
+    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @FetchRequest(sortDescriptors: []) var tags: FetchedResults<Tag>
+    @State var text: String = ""
+    @State var tag: String = ""
+    var body: some View {
+        NavigationView {
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    CircularImageView(color: .red)
+                    Spacer()
+                }
+                .padding([.top, .bottom])
+                HStack {
+                    Text("Enter a list title")
+                    Spacer()
+                }
+                .padding([.leading, .trailing])
+                TextField("Title", text: $text)
+                    .padding()
+                    .background(
+                        Color(red: 231/255.0, green: 234/255.0, blue: 237/255.0)
+                    )
+                    .cornerRadius(10)
+                    .padding()
+                
+                HStack {
+                    Text("Create new Tag")
+                    Spacer()
+                }
+                .padding(.horizontal)
+                HStack {
+                    TextField("Tag", text: $tag)
+                        .padding()
+                        .background(
+                            Color(red: 231/255.0, green: 234/255.0, blue: 237/255.0)
+                        )
+                        .cornerRadius(10)
+                    .padding()
+                    
+                    Button {
+                        Tag.save(title: tag, with: viewContext)
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .padding(.trailing)
+
+                }
+                /// Param -
+                ///    Destination: Cell
+                /// Resource
+                ///  TagFetchResult
+                List(tags, id: \.self) { tag in
+                    Text(tag.title ?? "")
+                }
+                .listStyle(.plain)
+                
+                Spacer()
+            }//:VSTASCK
+            .navigationBarTitle(Text("Create List"), displayMode: .inline)
+            .navigationBarItems(
+                leading: Button("Close") {
+                    self.presentationMode.wrappedValue.dismiss()
+                },
+                trailing: Button("Save") {
+                    if !self.text.isEmpty {
+                        ReminderList.create(withTitle: self.text, in: self.viewContext)
+                        Tag.save(title: tag, with: self.viewContext)
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            )
         }
-        .padding([.top, .bottom])
-        HStack {
-          Text("Enter a list title")
-          Spacer()
-        }
-        .padding([.leading, .trailing])
-        TextField("Title", text: $text)
-          .padding()
-          .background(
-            Color(red: 231/255.0, green: 234/255.0, blue: 237/255.0)
-          )
-          .cornerRadius(10)
-          .padding()
-        Spacer()
-      }
-      .navigationBarTitle(Text("Create List"), displayMode: .inline)
-      .navigationBarItems(
-        leading: Button("Close") {
-          self.presentationMode.wrappedValue.dismiss()
-        },
-        trailing: Button("Save") {
-          if !self.text.isEmpty {
-            ReminderList.create(withTitle: self.text, in: self.viewContext)
-            self.presentationMode.wrappedValue.dismiss()
-          }
-        }
-      )
     }
-  }
 }
 
 struct ReminderListCreateView_Previews: PreviewProvider {

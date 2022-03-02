@@ -36,24 +36,42 @@ import CoreData
 
 
 extension ReminderList {
-
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<ReminderList> {
-      return NSFetchRequest<ReminderList>(entityName: "ReminderList")
-  }
-
-  @NSManaged public var title: String
-  @NSManaged public var reminders: Array<Reminder>
-
-  static func create(withTitle title: String,
-                     in context: NSManagedObjectContext) {
-    let newReminderList = ReminderList(context: context)
-    newReminderList.title = title
-    do {
-      try context.save()
-    } catch {
-      let nserror = error as NSError
-      fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+    
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ReminderList> {
+        return NSFetchRequest<ReminderList>(entityName: "ReminderList")
     }
-  }
-
+    
+    @NSManaged public var title: String
+    @NSManaged public var reminders: Array<Reminder>
+    @NSManaged public var tags: Array<Tag>
+    
+    
+//    static func create(withTitle title: String,
+//                       tags: Array<Tag>?,
+//                       in context: NSManagedObjectContext) {
+//        let newReminderList = ReminderList(context: context)
+//        newReminderList.title = title
+//        if let tags = tags {
+//            newReminderList.tags = tags
+//        }
+//        do {
+//            try context.save()
+//        } catch {
+//            let nserror = error as NSError
+//            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//        }
+//    }
+    static func create(withTitle title: String,
+//                       tags: Array<Tag>?,
+                       in context: NSManagedObjectContext) {
+        let newReminderList = ReminderList(context: context)
+        newReminderList.title = title
+        do {
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
 }

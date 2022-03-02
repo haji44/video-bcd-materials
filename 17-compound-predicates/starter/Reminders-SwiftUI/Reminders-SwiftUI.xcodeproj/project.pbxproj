@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202D24B727CD388000A21DEF /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D24B527CD388000A21DEF /* Tag+CoreDataClass.swift */; };
+		202D24B827CD388000A21DEF /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D24B627CD388000A21DEF /* Tag+CoreDataProperties.swift */; };
+		202D24BF27CD41F600A21DEF /* TagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202D24BE27CD41F600A21DEF /* TagCell.swift */; };
 		D30696302534B3CD00374799 /* ReminderList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306962E2534B3CD00374799 /* ReminderList+CoreDataClass.swift */; };
 		D30696312534B3CD00374799 /* ReminderList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306962F2534B3CD00374799 /* ReminderList+CoreDataProperties.swift */; };
 		D30E2A87252E573E0040AFDA /* Reminders_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E2A86252E573E0040AFDA /* Reminders_SwiftUIApp.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202D24B527CD388000A21DEF /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		202D24B627CD388000A21DEF /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		202D24BE27CD41F600A21DEF /* TagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCell.swift; sourceTree = "<group>"; };
 		D306962E2534B3CD00374799 /* ReminderList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D306962F2534B3CD00374799 /* ReminderList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReminderList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D30E2A83252E573E0040AFDA /* Reminders-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Reminders-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,9 +67,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202D24BD27CD41EA00A21DEF /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				202D24BE27CD41F600A21DEF /* TagCell.swift */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
 		D308BF65252E635800B8E988 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				202D24B527CD388000A21DEF /* Tag+CoreDataClass.swift */,
+				202D24B627CD388000A21DEF /* Tag+CoreDataProperties.swift */,
 				D306962E2534B3CD00374799 /* ReminderList+CoreDataClass.swift */,
 				D306962F2534B3CD00374799 /* ReminderList+CoreDataProperties.swift */,
 				D36CFB11252E5B650099A462 /* Reminders.xcdatamodeld */,
@@ -114,6 +130,7 @@
 		D30E2A96252E578C0040AFDA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				202D24BD27CD41EA00A21DEF /* Tag */,
 				D33F15FD2534B6D900EBE85F /* ReminderList */,
 				D30E2A97252E579C0040AFDA /* Reminder */,
 			);
@@ -212,13 +229,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202D24BF27CD41F600A21DEF /* TagCell.swift in Sources */,
 				D30E2A9F252E57B30040AFDA /* ReminderStatusView.swift in Sources */,
+				202D24B727CD388000A21DEF /* Tag+CoreDataClass.swift in Sources */,
 				D3A0C43D252E66F300A495D4 /* Reminder+CoreDataClass.swift in Sources */,
 				D30696302534B3CD00374799 /* ReminderList+CoreDataClass.swift in Sources */,
 				D30696312534B3CD00374799 /* ReminderList+CoreDataProperties.swift in Sources */,
 				D33F15FA2534B6A800EBE85F /* ReminderListCreateView.swift in Sources */,
 				D30E2AA1252E57B30040AFDA /* NewReminderButtonView.swift in Sources */,
 				D30E2AA2252E57B30040AFDA /* CreateReminderView.swift in Sources */,
+				202D24B827CD388000A21DEF /* Tag+CoreDataProperties.swift in Sources */,
 				D30E2A89252E573E0040AFDA /* ContentView.swift in Sources */,
 				D30E2AA0252E57B30040AFDA /* RemindersView.swift in Sources */,
 				D3A0C440252E675100A495D4 /* Reminder+CoreDataProperties.swift in Sources */,

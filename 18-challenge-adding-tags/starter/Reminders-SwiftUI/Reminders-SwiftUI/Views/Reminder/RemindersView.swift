@@ -34,49 +34,62 @@ import SwiftUI
 import CoreData
 
 struct RemindersView: View {
-  @State var isShowingCreateModal: Bool = false
-  var fetchRequest: FetchRequest<Reminder>
-  var reminders: FetchedResults<Reminder> {
-    fetchRequest.wrappedValue
-  }
-  let reminderList: ReminderList
+    
+    @State var isShowingCreateModal: Bool = false
+    @State var isShowingTagViewModal: Bool = false
 
-  var body: some View {
-    VStack {
-      List {
-        Section {
-          ForEach(reminders, id: \.self) { reminder in
-            ReminderRow(reminder: reminder)
-          }
-        }
-      }
-      .listStyle(PlainListStyle())
-      .background(Color.white)
-      HStack {
-        NewReminderButtonView(isShowingCreateModal: $isShowingCreateModal, reminderList: reminderList)
-        Spacer()
-      }
-      .padding(.leading)
+    var fetchRequest: FetchRequest<Reminder>
+    var reminders: FetchedResults<Reminder> {
+        fetchRequest.wrappedValue
     }
-    .navigationBarTitle(Text("Reminders"))
-  }
-  init(reminderList: ReminderList) {
-    self.reminderList = reminderList
-    fetchRequest = Reminder.reminders(in: reminderList)
-  }
+    let reminderList: ReminderList
+    
+    var body: some View {
+        VStack {
+            List {
+                Section {
+                    ForEach(reminders, id: \.self) { reminder in
+                        ReminderRow(reminder: reminder)
+                    }
+                }
+            }
+            .listStyle(PlainListStyle())
+            .background(Color.white)
+            HStack {
+                NewReminderButtonView(isShowingCreateModal: $isShowingCreateModal, reminderList: reminderList)
+                Spacer()
+            }
+            .padding(.leading)
+            
+        }
+        .navigationBarTitle(Text("Reminders"))
+        .navigationBarItems(
+          trailing: Button {
+              
+          } label: {
+            Image(systemName: "plus")
+          }
+        )
+        
+    }
+    
+    init(reminderList: ReminderList) {
+        self.reminderList = reminderList
+        fetchRequest = Reminder.reminders(in: reminderList)
+    }
 }
 
 struct RemindersView_Previews: PreviewProvider {
-  static var previews: some View {
-    let container = NSPersistentContainer(name: "Reminders")
-    container.loadPersistentStores { (storeDescription, error) in
-      if let error = error as NSError? {
-        fatalError("Unresolved error \(error), \(error.userInfo)")
-      }
+    static var previews: some View {
+        let container = NSPersistentContainer(name: "Reminders")
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        let context = container.viewContext
+        let newReminderList = ReminderList(context: context)
+        newReminderList.title = "Preview List"
+        return RemindersView(reminderList: newReminderList).environment(\.managedObjectContext, context)
     }
-    let context = container.viewContext
-    let newReminderList = ReminderList(context: context)
-    newReminderList.title = "Preview List"
-    return RemindersView(reminderList: newReminderList).environment(\.managedObjectContext, context)
-  }
 }

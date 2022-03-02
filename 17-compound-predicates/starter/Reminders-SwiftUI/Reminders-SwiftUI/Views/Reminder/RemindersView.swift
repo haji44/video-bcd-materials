@@ -35,7 +35,7 @@ import CoreData
 
 struct RemindersView: View {
   @State var isShowingCreateModal: Bool = false
-  let fetchRequest = Reminder.completedRemindersFetchRequest()
+    var fetchRequest: FetchRequest<Reminder>
   var reminders: FetchedResults<Reminder> {
     fetchRequest.wrappedValue
   }
@@ -45,7 +45,7 @@ struct RemindersView: View {
     VStack {
       List {
         Section {
-          ForEach(reminderList.reminders, id: \.self) { reminder in
+          ForEach(reminders, id: \.self) { reminder in
             ReminderRow(reminder: reminder)
           }
         }
@@ -60,6 +60,11 @@ struct RemindersView: View {
     }
     .navigationBarTitle(Text("Reminders"))
   }
+    
+    init(reminderList: ReminderList) {
+        self.reminderList = reminderList
+        self.fetchRequest = Reminder.reminders(in: reminderList)
+    }
 }
 
 struct RemindersView_Previews: PreviewProvider {

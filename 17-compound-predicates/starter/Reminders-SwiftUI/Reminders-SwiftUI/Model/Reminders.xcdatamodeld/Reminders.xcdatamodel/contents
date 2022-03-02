@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Reminder" representedClassName="Reminder" syncable="YES">
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -11,9 +11,15 @@
     <entity name="ReminderList" representedClassName="ReminderList" syncable="YES">
         <attribute name="title" attributeType="String"/>
         <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Reminder" inverseName="list" inverseEntity="Reminder"/>
+        <relationship name="tag" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tag" inverseName="list" inverseEntity="Tag"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="title" attributeType="String"/>
+        <relationship name="list" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ReminderList" inverseName="tag" inverseEntity="ReminderList"/>
     </entity>
     <elements>
-        <element name="Reminder" positionX="-378.6171875" positionY="-59.2734375" width="128" height="133"/>
-        <element name="ReminderList" positionX="-63" positionY="18" width="128" height="73"/>
+        <element name="Reminder" positionX="-378.6171875" positionY="-59.2734375" width="128" height="119"/>
+        <element name="ReminderList" positionX="99.48046875" positionY="326.3125" width="128" height="74"/>
+        <element name="Tag" positionX="-225" positionY="0" width="128" height="73"/>
     </elements>
 </model>
